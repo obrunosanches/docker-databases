@@ -7,6 +7,8 @@ networks:
 volumes:
   mongodb_data:
     driver: local
+  # mariadb_data:
+  #   driver: local
 
 services:
   mongodb:
@@ -24,3 +26,17 @@ services:
       - mongodb_data:/data/db
     networks:
       - net_databases
+
+  # mariadb:
+  #   container_name: mariadb
+  #   build: ./mongo
+  #   image: mariadb
+  #   restart: always
+  #   ports:
+  #     - "43306:3306"
+  #   environment:
+  #     MARIADB_ROOT_PASSWORD: "${ENV_DB_PASSWORD}"
+  #   volumes:
+  #     - mariadb_data:/var/lib/mysql
+  #   networks:
+  #     - net_databases
