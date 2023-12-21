@@ -7,6 +7,8 @@ networks:
 volumes:
   mongodb_data:
     driver: local
+  pg_data:
+    driver: local
   # mariadb_data:
   #   driver: local
 
@@ -24,6 +26,18 @@ services:
       MONGO_REPLICA_PORT: 27017
     volumes:
       - mongodb_data:/data/db
+    networks:
+      - net_databases
+
+  postgres:
+    container_name: postgres
+    build: ./postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secret
     networks:
       - net_databases
 
