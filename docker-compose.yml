@@ -38,6 +38,7 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: secret
+      POSTGRES_DB: controlInvest
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
